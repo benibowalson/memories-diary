@@ -7,7 +7,7 @@ import Post from './Post/Post'
 
 import mycss from './styles'
 
-const Posts = () => {
+const Posts = ({ setCurrentId }) => {
     const myposts = useSelector((globalState) => globalState.postReducer)
     const myclasses = mycss()
 
@@ -19,7 +19,7 @@ const Posts = () => {
                 {
                     myposts.map((post) => (
                         <Grid key={post._id} item xs={12} sm={6}>
-                            <Post dPost={post} />
+                            <Post dPost={post} setdCurrentID={setCurrentId} />
                         </Grid>
                     ))
                 }

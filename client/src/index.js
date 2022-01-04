@@ -7,6 +7,7 @@ import thunk from 'redux-thunk'
 
 import reducers from './benny-reducers/combined-post-reducer'
 
+import './index.css'
 import App from './App'
 
 const mystore = createStore(reducers, compose(applyMiddleware(thunk)))

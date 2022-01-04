@@ -20,3 +20,14 @@ export const createPost = (post) => async (dispatch) => {
         console.log(error)
     }
 }
+
+export const updatePost = (id, post) => async (dispatch) => {
+    try {
+        //use the word 'data' in destructure; matches a field in the response
+        const { data } = await myAPI.updatePost(id, post)
+        console.log("UPDATE", data)
+        dispatch({ type: 'UPDATE', payload: data })
+    } catch (error) {
+        console.log(error.message)
+    }
+}

@@ -1,4 +1,5 @@
 
+import mongoose from 'mongoose'
 import PostModel from "../benny-models/postModel.js"
 
 export const getPosts = async (req, res) => {
@@ -20,4 +21,16 @@ export const createPost = async (req, res) => {
     } catch (error) {
         res.status(409).json({ message: error.message })
     }
+}
+
+export const updatePost = async (req, res) => {
+    const {id: _id } = req.params
+    const myPost = req.body
+    const editedPost = {...myPost, _id}
+
+    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No post with that id')
+
+    const updatedPost = await PostModel.findByIdAndUpdate(_id, editedPost, { new: true})
+
+    res.json(updatedPost)
 }

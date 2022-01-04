@@ -7,7 +7,7 @@ import moment from 'moment'
 
 import mycss from './styles'
 
-const Post = ({ dPost }) => {
+const Post = ({ dPost, setdCurrentID }) => {
     const myclasses = mycss()
     return (
         <Card className={myclasses.card}>
@@ -17,15 +17,17 @@ const Post = ({ dPost }) => {
                 <Typography variant='body2'>{moment(dPost.createdAt).fromNow()}</Typography>
             </div>
             <div className={myclasses.overlay2}>
-                <Button style={{ color: 'white' }} size='small' onClick={() => { }}>
-                    <MoreHorizIcon fontSize='default' />
+                <Button style={{ color: 'white' }} size='small' onClick={() => { setdCurrentID(dPost._id) }}>
+                    <MoreHorizIcon fontSize='medium' />
                 </Button>
             </div>
             <div className={myclasses.details}>
                 <Typography variant='body2' color='textSecondary'>{dPost.tags.map((tag) => `#${tag} `)}</Typography>
-            </div>
+            </div>            
+            <Typography className={myclasses.title} variant='h5' gutterBottom>{dPost.title}</Typography>
+
             <CardContent>
-                <Typography className={myclasses.title} variant='h5' gutterBottom>{dPost.message}</Typography>
+                <Typography variant='h5' gutterBottom>{dPost.message}</Typography>
             </CardContent>
             <CardActions className={myclasses.cardActions}>
                 <Button size='small' color='primary' onClick={() => { }}>
