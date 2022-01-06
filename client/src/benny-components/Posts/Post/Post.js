@@ -4,11 +4,14 @@ import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt'
 import DeleteIcon from '@material-ui/icons/Delete'
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
 import moment from 'moment'
+import { useDispatch } from 'react-redux'
+import { deletePost, likePost } from '../../../benny-actions/post-actions'
 
 import mycss from './styles'
 
 const Post = ({ dPost, setdCurrentID }) => {
     const myclasses = mycss()
+    const dispatch = useDispatch()
     return (
         <Card className={myclasses.card}>
             <CardMedia className={myclasses.media} image={dPost.selectedFile} title={dPost.title} />
@@ -27,15 +30,15 @@ const Post = ({ dPost, setdCurrentID }) => {
             <Typography className={myclasses.title} variant='h5' gutterBottom>{dPost.title}</Typography>
 
             <CardContent>
-                <Typography variant='h5' gutterBottom>{dPost.message}</Typography>
+                <Typography variant='body2' color='textSecondary' component="p">{dPost.message}</Typography>
             </CardContent>
             <CardActions className={myclasses.cardActions}>
-                <Button size='small' color='primary' onClick={() => { }}>
+                <Button size='small' color='primary' onClick={() => dispatch(likePost(dPost._id))}>
                     <ThumbUpAltIcon fontSize='small' />
-                    Like
+                    &nbsp;Like&nbsp;
                     {dPost.likeCount}
                 </Button>
-                <Button size='small' color='primary' onClick={() => { }}>
+                <Button size='small' color='primary' onClick={() => dispatch(deletePost(dPost._id))}>
                     <DeleteIcon fontSize='small' />
                     Delete
                 </Button>

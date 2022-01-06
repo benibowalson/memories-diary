@@ -11,8 +11,9 @@ const Posts = ({ setCurrentId }) => {
     const myposts = useSelector((globalState) => globalState.postReducer)
     const myclasses = mycss()
 
-    console.log("MY POSTS", myposts)
-    console.log("Posts Length: ", myposts.length)
+    //console.log("MY POSTS", myposts)
+    //console.log("Posts Length: ", myposts.length)
+    
     return (
         !myposts.length ? <CircularProgress />:(
             <Grid className={myclasses.container} container alignItems='stretch' spacing={3}>
