@@ -18,7 +18,6 @@ app.get('/', (req, res) => {
 })
 app.use('/posts', postRouter)
 
-//const CONNECTION_URL = 'mongodb+srv://Benny:ymang01@cluster0.vcaqu.mongodb.net/Cluster0?retryWrites=true&w=majority'
 const PORT = process.env.PORT || 5000
 
 const options_in_connect = { useNewUrlParser: true, useUnifiedTopology: true }
